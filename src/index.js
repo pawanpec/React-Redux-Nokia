@@ -7,9 +7,9 @@ import {Provider} from 'react-redux';
 import store from './store/configure.store';
 import App from './components/App';
 
-import {filterCourse} from '../src/actions/course.actions';
+import {fetchCourse} from '../src/actions/course.actions';
 
-store.dispatch(filterCourse(1));
+store.dispatch(fetchCourse());
 
 render(
 	<Provider store={store}>

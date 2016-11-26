@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import CourseList from './course.list.component';
+import store from '../store/configure.store';
+import {filterCourse} from '../actions/course.actions';
 class CourseDetail extends Component {
+	constructor(props) {
+		super(props);
+		store.dispatch(filterCourse(this.props.params.id));
+	}
 	render() {
 		const {courses} = this.props;
 		return (
 			<div>
-		<p>
-		we got:
-		{
-			this.props.params.name
-		}
-	</p>		
 			<CourseList courses={courses} />
 			</div>
 	);

@@ -35,19 +35,26 @@ class CourseList extends Component {
 		return { muiTheme: getMuiTheme(baseTheme) };
 	}
 	render() {
+		let isActive=false;
+		let subHeaderText='Click to view your favorite course';
+		if(!this.props.showDetails){
+			isActive=true;
+		}else{
+			subHeaderText='Use browser back to go back to Course List';
+		}
 		return (
 			<div style={styles.root}>
 	<AppBar
 		title="All Courses"
 		iconClassNameRight="muidocs-icon-navigation-expand-more" />
 			<GridList cellHeight={180} style={styles.gridList}>
-	<Subheader>Click to view your favorite course</Subheader>
+	<Subheader>{subHeaderText}</Subheader>
 		{this.props.courses.map((course) => (
 		<GridTile
 		key={course.id}
 		title={course.title}
 	>
-	<Link to={course.id}><img src={course.img} /></Link>
+	<Link to={course.id} isActive={isActive}><img src={course.img} /></Link>
 		</GridTile>
 	))}
 	</GridList>

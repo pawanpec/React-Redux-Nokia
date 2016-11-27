@@ -26,10 +26,9 @@ class CourseList extends Component {
 	constructor(props) {
 		super(props);
 		console.log("this.props.showDetails "+this.props.showDetails);
-		if(!this.props.showDetails){
+	}
+	componentDidMount() {
 			store.dispatch(fetchCourse());
-		}
-		
 	}
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
@@ -37,16 +36,19 @@ class CourseList extends Component {
 	render() {
 		let isActive=false;
 		let subHeaderText='Click to view your favorite course';
+		let title='All Courses';
+		let titleNode;
 		if(!this.props.showDetails){
 			isActive=true;
+			titleNode=<AppBar title={title} iconClassNameRight="muidocs-icon-navigation-expand-more" />
 		}else{
 			subHeaderText='Use browser back to go back to Course List';
+			title=this.props.title;
+			titleNode=<AppBar title={title} />
 		}
 		return (
 			<div style={styles.root}>
-	<AppBar
-		title="All Courses"
-		iconClassNameRight="muidocs-icon-navigation-expand-more" />
+				{titleNode}
 			<GridList cellHeight={180} style={styles.gridList}>
 	<Subheader>{subHeaderText}</Subheader>
 		{this.props.courses.map((course) => (
@@ -54,7 +56,7 @@ class CourseList extends Component {
 		key={course.id}
 		title={course.title}
 	>
-	<Link to={course.id} isActive={isActive}><img src={course.img} /></Link>
+	<Link to={course.title} isActive={isActive}><img src={course.img} /></Link>
 		</GridTile>
 	))}
 	</GridList>

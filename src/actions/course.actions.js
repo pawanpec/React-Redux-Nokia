@@ -42,12 +42,12 @@ export function fetchCourse() {
 			})
 	}
 }
-export function filterCourse(id) {
-	console.log("id "+id);
+export function filterCourse(name) {
+	console.log("name "+name);
 	return (dispatch) => {
 		return CourseApi.getAllCourses()
 				.then((courses) => {
-			     let filterCourses=courses.filter(course => course.id == id);
+			     let filterCourses=courses.filter(course => course.title == name);
 		        console.log("filterCourses "+JSON.stringify(filterCourses[0].courseDetails));
 				dispatch(filterCourseLoaded(filterCourses[0].courseDetails));
 	})

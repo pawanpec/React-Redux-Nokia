@@ -9,6 +9,6 @@ export default (
 	<Route path="/" component={App}>
 		<IndexRoute component={CourseList} />
 		<Route path="/" component={CourseList} />
-		<Route path=":id" component={CourseDetail} />
+		<Route path=":name" component={CourseDetail} />
 	</Route>
 )

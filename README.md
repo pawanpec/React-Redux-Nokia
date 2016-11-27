@@ -10,6 +10,9 @@ This will run the automated build process, start up a webserver, and open the ap
 6. **Install [React developer tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) and [Redux Dev Tools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)** in Chrome.
 7. Having issues? See below.
 
+## Running Test Cases
+npm test
+
 ## Having Issues? Try these things first:
 1. Run `npm install` - If you forget to do this, you'll see this: `babel-node: command not found`.
 2. Make sure the path doesn't include any spaces, or install the latest version of eslint-watch which adds support for paths containing spaces: `npm install eslint-watch@2.1.13`

@@ -21,6 +21,9 @@ const styles = {
 		height: 450,
 		overflowY: 'auto',
 	},
+	titleStyle: {
+		color: 'rgb(0,0,255)',
+	}
 }; 
 class CourseList extends Component {
 	constructor(props) {
@@ -53,8 +56,11 @@ class CourseList extends Component {
 	<Subheader>{subHeaderText}</Subheader>
 		{this.props.courses.map((course) => (
 		<GridTile
+		titlePosition="top"
+		titleBackground="linear-gradient(to top, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
 		key={course.id}
 		title={course.title}
+		titleStyle={styles.titleStyle}
 	>
 	<Link to={course.title} isActive={isActive}><img src={course.img} /></Link>
 		</GridTile>

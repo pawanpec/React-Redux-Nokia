@@ -6,7 +6,8 @@
     "start": "npm run open:src",
     "open:src": "babel-node tools/server.js",
     "lint": "node_modules/.bin/esw webpack.config.* src tools",
-    "lint:watch": "npm run lint -- --watch"
+    "lint:watch": "npm run lint -- --watch",
+    "test": "mocha test/setup.js test/courses.test.js"
   },
   "author": "Pawan Kumar Goyal",
   "license": "MIT",
@@ -37,7 +38,7 @@
     "compression": "1.6.1",
     "cross-env": "1.0.7",
     "css-loader": "0.23.1",
-    "enzyme": "2.2.0",
+    "enzyme": "^2.2.0",
     "eslint": "2.9.0",
     "eslint-plugin-import": "1.6.1",
     "eslint-plugin-react": "5.0.1",

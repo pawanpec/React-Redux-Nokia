@@ -37,7 +37,7 @@ class CourseList extends Component {
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
 	}
-	_getComments() {
+	_getCourses() {
 		return this.props.courses.map(( course ) => {
 		return (
 			<Course key={course.id} title={course.title} course={course}/>
@@ -45,7 +45,7 @@ class CourseList extends Component {
 			});
 	}
 	render() {
-		const comments = this._getComments();
+		const courses = this._getCourses();
 		let isActive=false;
 		let subHeaderText='Click to view your favorite course';
 		let title='All Courses';
@@ -63,7 +63,7 @@ class CourseList extends Component {
 				{titleNode}
 			<GridList cellHeight={180} style={styles.gridList}>
 	<Subheader>{subHeaderText}</Subheader>
-		{comments}
+		{courses}
 	</GridList>
 		</div>
 		);

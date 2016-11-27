@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
-import CourseList from './course.list.component';
+import CourseList from './Course.list.component.js';
 import store from '../store/configure.store';
 import {filterCourse} from '../actions/course.actions';
 class CourseDetail extends Component {
@@ -10,9 +10,10 @@ class CourseDetail extends Component {
 	}
 	render() {
 		const {courses} = this.props;
+		const showDetails=true;
 		return (
 			<div>
-			<CourseList courses={courses} />
+			<CourseList courses={courses} showDetails={showDetails} />
 			</div>
 	);
 	}

@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux'
 import AppBar from 'material-ui/AppBar';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import {GridList, GridTile} from 'material-ui/GridList';
+import {GridList,GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import {Link} from 'react-router';
+import store from '../store/configure.store';
+import {fetchCourse} from '../actions/course.actions';
 const styles = {
 	root: {
 		display: 'flex',
@@ -18,52 +21,48 @@ const styles = {
 		height: 450,
 		overflowY: 'auto',
 	},
-};
-export default class CourseList extends Component {
+}; 
+class CourseList extends Component {
+	constructor(props) {
+		super(props);
+		console.log("this.props.showDetails "+this.props.showDetails);
+		if(!this.props.showDetails){
+			store.dispatch(fetchCourse());
+		}
+		
+	}
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
 	}
 	render() {
 		return (
-            <div style={styles.root}>
-    <AppBar
-        title="All Courses"
-        iconClassNameRight="muidocs-icon-navigation-expand-more" />
-    <GridList cellHeight={180} style={styles.gridList}>
+			<div style={styles.root}>
+	<AppBar
+		title="All Courses"
+		iconClassNameRight="muidocs-icon-navigation-expand-more" />
+			<GridList cellHeight={180} style={styles.gridList}>
 	<Subheader>Click to view your favorite course</Subheader>
 		{this.props.courses.map((course) => (
 		<GridTile
 		key={course.id}
 		title={course.title}
 	>
-    <Link to={course.id}><img src={course.img} /></Link>
-	</GridTile>
+	<Link to={course.id}><img src={course.img} /></Link>
+		</GridTile>
 	))}
 	</GridList>
 		</div>
-			/*<table>
-			<thead>
-				<tr>
-					<th>id</th>
-					<th>title</th>
-				</tr>
-			</thead>
-			<tbody>
-			{
-				this.props.courses.map((course) => {
-					return(
-						<tr>
-							<td> {course.id} </td>
-							<td> {course.title} </td>
-						</tr>
-					)
-				})
-			}
-			</tbody>
-			</table>*/
 		);
 	}
 }
+const mapStateToProps = (state) => {
+	return {
+		courses: state.course,
+		isFetching: state.api.isFetching
+	}
+}
+
+export default connect(mapStateToProps)(CourseList);
 CourseList.childContextTypes = {
 	muiTheme: React.PropTypes.object.isRequired,
 };

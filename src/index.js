@@ -4,13 +4,8 @@ import {Router, browserHistory} from 'react-router';
 import {render} from 'react-dom';
 import routes from './routes';
 import {Provider} from 'react-redux';
-import store from './store/configure.store';
 import App from './components/App';
-
-import {fetchCourse} from '../src/actions/course.actions';
-
-store.dispatch(fetchCourse());
-
+import store from '../src/store/configure.store';
 render(
 	<Provider store={store}>
 		<Router routes={routes} history={browserHistory} />

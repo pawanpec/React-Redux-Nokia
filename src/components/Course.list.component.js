@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Course from './Course'
 import {connect} from 'react-redux'
 import AppBar from 'material-ui/AppBar';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
@@ -36,7 +37,15 @@ class CourseList extends Component {
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
 	}
+	_getComments() {
+		return this.props.courses.map(( course ) => {
+		return (
+			<Course key={course.id} title={course.title} course={course}/>
+			);
+			});
+	}
 	render() {
+		const comments = this._getComments();
 		let isActive=false;
 		let subHeaderText='Click to view your favorite course';
 		let title='All Courses';
@@ -54,17 +63,7 @@ class CourseList extends Component {
 				{titleNode}
 			<GridList cellHeight={180} style={styles.gridList}>
 	<Subheader>{subHeaderText}</Subheader>
-		{this.props.courses.map((course) => (
-		<GridTile
-		titlePosition="top"
-		titleBackground="linear-gradient(to top, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
-		key={course.id}
-		title={course.title}
-		titleStyle={styles.titleStyle}
-	>
-	<Link to={course.title} isActive={isActive}><img src={course.img} /></Link>
-		</GridTile>
-	))}
+		{comments}
 	</GridList>
 		</div>
 		);

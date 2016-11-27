@@ -7,6 +7,9 @@ class CourseDetail extends Component {
 	constructor(props) {
 		super(props);
 	}
+	getChildContext() {
+		return { muiTheme: getMuiTheme(baseTheme) };
+	}
 	componentDidMount() {
 		store.dispatch(filterCourse(this.props.params.name));
 	}

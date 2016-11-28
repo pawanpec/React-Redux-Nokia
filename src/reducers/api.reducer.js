@@ -5,9 +5,9 @@ const initialState = {}
 function apiReducer(state = initialState, action) {
 	switch (action.type) {
 		case LOADING:
-			return {fetching: true};
+			return {isFetching: true};
 		case LOADED:
-			return {fetching: false};
+			return {isFetching: false};
 		default:
 			return state;
 	}

@@ -18,9 +18,8 @@ const styles = {
 		justifyContent: 'space-around',
 	},
 	gridList: {
-		width: 500,
-		height: 500,
-		overflowY: 'auto',
+		width: '650',
+		height: 'auto'
 	},
 	titleStyle: {
 		color: 'rgb(0,0,255)',
@@ -61,7 +60,7 @@ class CourseList extends Component {
 		return (
 			<div style={styles.root}>
 				{titleNode}
-			<GridList cellHeight={180} style={styles.gridList}>
+			<GridList cellHeight={300} padding={25} style={styles.gridList}>
 	<Subheader>{subHeaderText}</Subheader>
 		{courses}
 	</GridList>

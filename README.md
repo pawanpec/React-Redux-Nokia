@@ -10,7 +10,9 @@ This will run the automated build process, start up a webserver, and open the ap
 6. **Install [React developer tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) and [Redux Dev Tools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)** in Chrome.
 7. Having issues? See below.
 
+
 ## Running Test Cases
+npm install karma-cli -g
 npm test
 
 ## Having Issues? Try these things first:

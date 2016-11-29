@@ -16,17 +16,18 @@ describe('<CourseList />', () => {
             beforeEach(() => {
             // Prevent duplication
             wrapper = shallow(<CourseList courses={courses} showDetails={showDetails} title={courseName} store={store} />);
-    wrapper.setState({
-        course: courses
-    });
+            wrapper.setState({
+                course: courses
+            });
            });
 
         it('CourseList should exist', () => {
             expect(wrapper).to.exist;
         });
         it('CourseList set state', () => {
-            
             expect(wrapper.state().course).to.be.instanceof(Array);
         });
+                  
+
 
 });
